@@ -1,0 +1,43 @@
+
+.carrousel-other-auctions {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3vw;
+    margin-top: calc(var(--space-base) * 4);
+
+    @media only screen and(min-width: $tablet){
+        margin-top: calc(var(--space-base) * 2);
+    }
+
+    & > .arrow-nav {
+
+        &--right, &--left {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 4vw;
+            background-color: $color-xlight-grey;
+            opacity: .5;
+            margin: 0 auto;
+
+            &:hover {
+                cursor: pointer;
+                opacity: .9;
+            }
+
+            & > img {
+                width: 70%;
+            }
+        }
+
+        &--left {
+            margin-left: auto;
+            border-radius: 3px 0 0 3px;
+        }
+
+        &--right {
+            border-radius: 0 3px 3px 0;
+        }
+       
+    }
+}

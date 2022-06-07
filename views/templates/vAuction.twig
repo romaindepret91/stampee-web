@@ -1,0 +1,218 @@
+{% if oMemberConnected %}
+{{ include("biddingModal.twig") }}
+{% else %}
+{{ include("logInModal.twig") }}
+{% endif %}
+<script>
+history.pushState({}, '', './?entity=auction&auctionId={{ auction.Auction_id }}');
+document.addEventListener('DOMContentLoaded', () => {
+    const elSmallImgs = document.querySelectorAll('.item-img--small');
+    const elLargeImg = document.querySelector('.item-img--large').firstElementChild;
+    elSmallImgs.forEach((elSmallImg) => {
+        elSmallImg.addEventListener('click', () => {
+            elSmallImgSrc = elSmallImg.firstElementChild.src;
+            elLargeImg.src = elSmallImgSrc;
+        });
+    });
+});
+</script>
+<main>
+    <section class="details-grid">
+        <div class="details-grid-item--one">
+            <div class="item-img--small">
+                <img src="{{ auction.Stamp_main_image }}" alt="petite image du timbre">
+            </div>
+            {% if imgSupp1 %}
+                <div class="item-img--small">
+                    <img src="{{ imgSupp1.Image_secondary_path }}" alt="petite image du timbre">
+                </div>
+            {% endif %}
+             {% if imgSupp2 %}
+                <div class="item-img--small">
+                    <img src="{{ imgSupp2.Image_secondary_path }}" alt="petite image du timbre">
+                </div>
+            {% endif %}
+        </div>
+        <div class="details-grid-item--two">
+            <div class="item-img--large">
+                <img src="{{ auction.Stamp_main_image }}" alt="grande image du timbre">
+            </div>
+        </div>
+        <div class="details-grid-item--three">
+            <div class="info-tile">
+                <div class="info-tile-top">
+                    <h2 class="info-tile-title">{{ auction.Stamp_name }}</h2>
+                    <h3 class="info-tile-title-secondary">{{ auction.Stamp_country_origin }}</h3>
+                    <div class="info-tile-value">
+                        <p class="value-label">Prix de départ:</p>
+                        <p class="value-amount">${{ auction.Auction_starting_price }}</p>
+                    </div>
+                </div>
+                <div class="divider--gallery divider--large divider--light-grey"></div>
+                <div class="info-tile-bottom">
+                    <div class="info-tile-bottom-container">
+                        <div class="info-tile-bid">
+                            <p class="bid-label">Enchère actuelle la plus haute:</p>
+                            {% if auction.Auction_highest_bid == null or 0 %}
+                                <p class="bid-amount" style="font-size:1.1rem; font-weight:200;"><i>Aucune enchère placée</i></p>
+                            {% else %}
+                                <p class="bid-amount">${{ auction.Auction_highest_bid }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="info-tile-bids-number">
+                            <p class="bids-number-label">Nombre d'enchères placées:</p>
+                            <p class="bids-number-amount">{{ auction.Auction_bids_number == null ? 0 : auction.Auction_bids_number }}</p>
+                        </div>
+                    </div>
+                    {% if auction.Auction_status != 'En cours' %}
+                        <div class="info-tile-actions" style="pointer-events:none; opacity:.5;">
+                    {% else %}
+                    <div class="info-tile-actions">
+                    {% endif %}
+                        <div class="info-tile-buy">
+                        {% if oMemberConnected %}
+                            <button class="btn btn-buy btn--dark-blue"><a class="btn-buy-content" data-href="./?entity=auction&action=bid&auctionId={{ auction.Auction_id }}&stampId={{ auction.Stamp_id }}">Placer votre enchère<img src="./assets/icons/bidding-y.png" alt="bid logo"></a></button>
+                        {% else %}
+                            <button class="btn btn-buy btn--dark-blue"><a class="btn-buy-content" data-href="./?entity=logIn&action=display">Placer votre enchère<img src="./assets/icons/bidding-y.png" alt="bid logo"></a></button>
+                        {% endif %}
+                        </div>
+                        <div class="info-tile-save">
+                            <img src="./assets/icons/heart2.png" alt="logo favori">
+                        </div>
+                    </div>
+                    <span class="action-msg {{ resultClass }}">{{ message }}</span>
+                    <div class="info-tile-countdown">
+                        {% if auction.Auction_status == 'En cours' %}
+                            <p class="countdown-label">L'enchère se termine dans:</p>
+                            <p class="countdown-time"><span>{{ daysLeft }}j </span><span>{{ hoursLeft }}h </span><span>{{ minLeft }}min</span></p>
+                        {% elseif auction.Auction_status == 'À venir' %}
+                            <p class="countdown-label">L'enchère commence dans:</p>
+                            <p class="countdown-time"><span>{{ daysLeft }}j </span><span>{{ hoursLeft }}h </span><span>{{ minLeft }}min</span></p>
+                        {% else %}
+                            <p class="countdown-label" style="color:#AD0000;">Enchère clôturée</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="live-now">
+                    {% if auction.Auction_status == 'En cours' %}
+                        <img class="live-now__img" src="./assets/icons/price-b.png" alt="bid logo">
+                        <p class="live-now__text">En cours</p>
+                    {% elseif auction.Auction_status == 'À venir' %}
+                        <img class="live-now__img" src="./assets/icons/price-b.png" alt="bid logo">
+                        <p class="live-now__text">À venir</p>
+                    {% else %}
+                        <img class="live-now__img" src="./assets/icons/price-b.png" alt="bid logo">
+                        <p class="live-now__text" style="color:#AD0000;">Clôturée</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="history-tile">
+                <h4 class="history-tile__title">Histoire du timbre:</h4>
+                <p class="history-tile__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, incidunt temporibus. Adipisci placeat perferendis labore deserunt ea minima porro eius iste molestiae soluta sapiente tenetur nam, est laboriosam culpa sunt illum fugiat numquam. Minima neque commodi excepturi animi quos provident.</p>
+            </div>
+        </div>
+        <div class="details-grid-item--four">
+            <div class="description">
+                <div class="description-title">
+                    <h2>Description</h2>
+                </div>
+                <div class="description-details">
+                    <div class="description-details-left">
+                        <ul class="details-list">
+                            <li class="details-list__item">Nom:<span>{{ auction.Stamp_name }}</span></li>
+                            <li class="details-list__item">Pays:<span>{{ auction.Stamp_country_origin }}</span></li>
+                            <li class="details-list__item">Région d'origine:<span>{{ auction.Stamp_region_origin }}</span></li>
+                            <li class="details-list__item">Date d'émission<span>{{ auction.Stamp_year }}</span></li>
+                        </ul>
+                    </div>
+                    <div class="divider--light-grey divider--vertical"></div>
+                    <div class="description-details-middle">
+                        <ul class="details-list">
+                            <li class="details-list__item">Couleur:<span>{{ auction.Stamp_color }}</span></li>
+                            <li class="details-list__item">Condition:<span>{{ auction.Stamp_condition }}</span></li>
+                            <li class="details-list__item">Dimensions:<span>{{ auction.Stamp_dimensions }}</span></li>
+                            <li class="details-list__item">Certifié:<span>{{ auction.Stamp_certified == 1 ? 'oui' : 'non' }}</span></li>
+                        </ul>
+                    </div>
+                    <div class="divider--light-grey divider--vertical"></div>
+                    <div class="description-details-right">
+                        <ul class="details-list">
+                            <li class="details-list__item">Quantité émise: <span>{{ auction.Stamp_prints_number }}</span></li>
+                            <li class="details-list__item">Graveur: <span>{{ auction.Stamp_creator == '' ? 'Non renseigné' : auction.Stamp_creator }}</span></li>
+                            <li class="details-list__item">Fin d'émission: <span>{{ auction.Stamp_year_end == null ? 'Non renseigné' : auction.Stamp_year_end }}</span></li>
+                            <li class="details-list__item">Numéro série: <span>{{ auction.Stamp_number == '' ? 'Non renseigné' : auction.Stamp_number }}</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="details-grid-item--five">
+            <div class="title-other-auctions">
+                <h2>Enchères similaires</h2>
+            </div>
+            <div class="carrousel-other-auctions spacer-top-20">
+                <div class="arrow-nav--left">
+                    <img src="./assets/icons/arrow-l.png" alt="arrow left">
+                </div>
+                {% for similarAuction in similarAuctions %}
+                    {% if similarAuction != '' %}
+                        <article class="auctions-grid-item--small">
+                            <div class="tile-img--gallery">
+                                <img src="{{ similarAuction.Stamp_main_image }}" alt="image du timbre">
+                            </div>
+                            <div class="tile-text-content--small">
+                                <div class="text-content-top--gallery">
+                                    <div class="tile-title--small">
+                                        <h3>{{ similarAuction.Stamp_name }}</h3>
+                                        <h2>{{ similarAuction.Stamp_country_origin }}</h2>
+                                    </div>
+                                    <div class="divider--gallery divider--small divider--light-grey"></div>
+                                    <div class="tile-origin">
+                                        <p><span>Pays d'origine:</span> {{ similarAuction.Stamp_country_origin }}</p>
+                                    </div>
+                                    <div class="tile-stamp-status">
+                                        <p><span>Condition:</span> {{ similarAuction.Stamp_condition }}</p>
+                                    </div>
+                                    <div class="tile-stamp-year">
+                                        <p><span>Année d'émission:</span> {{ similarAuction.Stamp_year }}</p>
+                                    </div>
+                                    <div class="divider--gallery divider--small divider--light-grey"></div>
+                                </div>
+                                <div class="text-content-middle--gallery">
+                                    <div class="tile-price-img--small">
+                                        <img src="./assets/icons/price-b.png" alt="bid logo">
+                                    </div>
+                                    <div class="tile-bid--small">
+                                        <p>${{ similarAuction.Auction_starting_price }}</p>
+                                    </div>
+                                </div>
+                                <div class="text-content-bottom--gallery">
+                                    <div class="auctions-grid-item-status--small">
+                                        <p>En cours</p>
+                                        {% set daysLeft = ((similarAuction.Auction_date_end|date('U') - 'now'|date('U')) / 60 / 60 / 24) %}
+                                        {% if daysLeft < 1 %}
+                                            <p>Termine aujourd'hui</p>
+                                        {% else %}
+                                            <p>Termine dans: {{ daysLeft|number_format }} jour{{daysLeft|number_format == 1 ? '' : 's'}}</p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="tile-favorite--small">
+                                        <img src="./assets/icons/heart2.png" alt="logo favori">
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="extended-link" href="./?entity=auction&auctionId={{ similarAuction.Stamp_auction_id }}"><img src="./assets/icons/bidding.png" alt="bidding logo"><span class="arrow">&raquo;</span></a>
+                        </article>
+                    {% else %}
+                        <article class="auctions-grid-item--small" style="display:flex;justify-content:center;align-items:center;">
+                        <p style="font-style:italic;opacity:.6;text-align:center;">Aucune enchère similaire</p>
+                        </article>
+                    {% endif %}
+                {% endfor %}
+                <div class="arrow-nav--right">
+                    <img src="./assets/icons/arrow-r.png" alt="arrow left">
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

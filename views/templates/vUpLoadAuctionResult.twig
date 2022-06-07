@@ -1,0 +1,65 @@
+
+{% if auction and stamp %}
+    <script>history.pushState({}, '', './?entity=upLoadAuction&action=upload&stamp_name={{ stamp.stamp_name }}&stamp_country_origin={{ stamp.stamp_country_origin }}&auction_date_start={{ auction.auction_date_start }}&auction_date_end={{ auction.auction_date_end }}&auction_starting_price={{ auction.auction_starting_price }}&stamp_main_image={{ stamp.stamp_main_image }}&reload')</script>
+    <main>
+        <section class="my-auctions-sales">
+            <h1 class="my-auctions-sales-title">{{ title }}</h1>
+            <p class="my-auctions-sales-msg">{{ message }}</p>
+            <div class="my-auction-sale-wrapper">
+                <div class="my-auction-sale">
+                    <div class="my-auction-sale-content">
+                        <div class="my-auction-sale-info">
+                            <div class="my-auction-sale-info-container">
+                                <h3 class="my-auction-sale-title">{{ stamp.stamp_name }}</h3>
+                                <p class="my-auction-sale-info">{{ stamp.stamp_country_origin }}</p>
+                            </div>
+                            <div class="my-auction-sale-info-container">
+                                <p class="my-auction-sale-info-item"><span class="my-auction-sale-info-label">Date de début d'enchère:</span> {{ auction.auction_date_start }}</p>
+                                <p class="my-auction-sale-info-item"><span class="my-auction-sale-info-label">Date de fin d'enchère:</span> {{ auction.auction_date_end }}</p>
+                                <p class="my-auction-sale-info-item"><span class="my-auction-sale-info-label">Prix:</span> ${{ auction.auction_starting_price }}</p>
+                            </div>
+                        </div>
+                        <div class="my-auction-sale-btns">
+                            <button class="my-auction-sale-btn btn btn--light-blue"><a href="./?entity=myAuctionsSales">Voir mes ventes</a></button>
+                        </div>
+                    </div>
+                    <div class="my-auction-sale-img">
+                        <img src="{{ stamp.stamp_main_image }}" alt="auction image">
+                    </div>
+                </div>
+            </div>
+        </section>
+{% else %}
+    <script>
+    history.pushState({}, '', './?entity=upLoadAuction&action=upload&stamp_name={{ stamp_name }}&stamp_country_origin={{ stamp_country_origin }}&auction_date_start={{ auction_date_start }}&auction_date_end={{ auction_date_end }}&auction_starting_price={{ auction_starting_price }}&stamp_main_image={{ stamp_main_image }}&reload')
+    </script>
+    <main>
+        <section class="my-auctions-sales">
+            <h1 class="my-auctions-sales-title">{{ title }}</h1>
+            <p class="my-auctions-sales-msg">{{ message }}</p>
+            <div class="my-auction-sale-wrapper">
+                <div class="my-auction-sale">
+                    <div class="my-auction-sale-content">
+                        <div class="my-auction-sale-info">
+                            <div class="my-auction-sale-info-container">
+                                <h3 class="my-auction-sale-title">{{ stamp_name }}</h3>
+                                <p class="my-auction-sale-info">{{ stamp_country_origin  }}</p>
+                            </div>
+                            <div class="my-auction-sale-info-container">
+                                <p class="my-auction-sale-info"><span class="my-auction-sale-info-label">Date de début d'enchère:</span> {{ auction_date_start }}</p>
+                                <p class="my-auction-sale-info"><span class="my-auction-sale-info-label">Date de fin d'enchère:</span> {{ auction_date_end }}</p>
+                                <p class="my-auction-sale-info"><span class="my-auction-sale-info-label">Prix:</span> ${{ auction_starting_price }}</p>
+                            </div>
+                        </div>
+                        <div class="my-auction-sale-btns">
+                            <button class="my-auction-sale-btn btn btn--light-blue"><a href="./?entity=myAuctionsSales">Voir mes ventes</a></button>
+                        </div>
+                    </div>
+                    <div class="my-auction-sale-img">
+                        <img src="{{ stamp.stamp_main_image }}" alt="auction image">
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endif %}
+    </main>

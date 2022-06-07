@@ -1,0 +1,47 @@
+
+.update-user-form {
+
+    & > .form-title {
+        font-family: $font-tertiary;
+    }
+
+    & > .form {
+        display: flex;
+        flex-direction: column;
+        margin-top: var(--space-base);
+
+        & > .form-input {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            width: 30vw;
+            margin-top: 20px;
+
+            & > .text-input {
+                width: 70%;
+            }
+
+            & > .select-input {
+                font-size: calc(var(--font-size-default) * .9);
+                padding: 10px;
+            }
+
+            & > .error-msg {
+                position: absolute;
+                left: 31vw;
+                width: fit-content;
+                color: $color-red-dark;
+            }
+         }
+
+         & > .form-actions {
+
+             & > .btn {
+                 width: 10%;
+                 font-weight: $font-weight-heavy;
+                 padding: 10px;
+                 margin-top: calc(var(--space-base) * 2);
+             }
+         }
+    }
+}

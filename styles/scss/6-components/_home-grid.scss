@@ -1,0 +1,6 @@
+
+.home-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: calc(var(--space-base) * 3);
+}

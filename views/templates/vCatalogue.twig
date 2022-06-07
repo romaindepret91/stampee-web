@@ -1,0 +1,239 @@
+<h1 class="catalogue-title spacer-top-20">Catalogue d'enchères</h1>
+    <aside class="catalogue-top">
+        <form class="catalogue-top-form">
+            <input type="text" name="search" id="searchbar-auction" placeholder="Trouver une enchère...">
+            <label for="searchbar-auction">Trouver une enchère</label>
+            <input type="submit" value="searchbar-auction">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewbox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+            <span>Annuler la recherche</span>
+        </form>
+        <div class="display-btns">
+            <img class="gallery-style-btn" src="./assets/icons/display-gallery.png" alt="gallery-style display button">
+            <img class="list-style-btn" src="./assets/icons/display-list.png" alt="list-style display button">
+        </div>
+    </aside>
+    <main class="catalogue-main">
+        <aside class="search-auctions">
+            <section class="search-auctions__tile">
+                <h2 class="search-auctions__title">Filtres de recherche</h2>
+                <div class="search-auctions__content">
+                    <div class="search-auctions__criteria" data-criteria-type="region">
+                        <h3 class="criteria-title">Régions d'origine</h3>
+                        <form action="#" class="criteria-form spacer-top-10">
+                            <div class="form-input-checkbox">
+                                <input type="checkbox" id="north-america" name="north-america" value="north-america">
+                                <label for="north-america">Amérique du Nord</label>
+                            </div>
+                            <div class="form-input-checkbox">
+                                <input type="checkbox" id="europe" name="europe" value="europe">
+                                <label for="europe">Europe</label>
+                            </div>
+                            <div class="form-input-checkbox">
+                                <input type="checkbox" id="asie" name="asie" value="asie">
+                                <label for="asie">Asie</label>
+                            </div>
+                            <div class="form-input-checkbox">
+                                <input type="checkbox" id="south-america" name="south-america" value="south-america">
+                                <label for="south-america">Amérique du Sud</label>
+                            </div>
+                            <div class="form-input-checkbox">
+                                <input type="checkbox" id="africa" name="africa" value="africa">
+                                <label for="africa">Afrique</label>
+                            </div>
+                            <div class="form-input-checkbox">
+                                <input type="checkbox" id="others" name="others" value="others">
+                                <label for="others">Reste du monde</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="divider--gallery divider--large--search divider--dark-grey"></div>
+                    <div class="search-auctions__criteria" data-criteria-type="condition">
+                        <h3 class="criteria-title">Conditions</h3>
+                        <form action="#" class="criteria-form spacer-top-10">
+                            <div class="form-input-checkbox">
+                                <input type="checkbox" id="state-perfect" name="state-perfect" value="state-perfect">
+                                <label for="state-perfect">Parfaite</label>
+                            </div>
+                            <div class="form-input-checkbox">
+                                <input type="checkbox" id="state-excellent" name="state-excellent" value="state-excellent">
+                                <label for="state-excellent">Excellente</label>
+                            </div>
+                            <div class="form-input-checkbox">
+                                <input type="checkbox" id="state-good" name="state-good" value="state-good">
+                                <label for="state-good">Bonne</label>
+                            </div>
+                            <div class="form-input-checkbox">
+                                <input type="checkbox" id="state-average" name="state-average" value="state-average">
+                                <label for="state-average">Moyenne</label>
+                            </div>
+                            <div class="form-input-checkbox">
+                                <input type="checkbox" id="state-bad" name="state-bad" value="state-bad">
+                                <label for="state-bad">Endommagée</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="divider--gallery divider--large--search divider--dark-grey"></div>
+                    <div class="search-auctions__criteria" data-criteria-type="period">
+                        <h3 class="criteria-title">Périodes d'émission</h3>
+                        <form action="#" class="criteria-form spacer-top-10">
+                            <select name="period-select" id="period-select" size="5">
+                                <option value="1840-{{'now'|date('Y')}}">Toutes périodes</option>
+                                <option value="1840-1900">1840 à 1900</option>
+                                <option value="1901-1939">1901 à 1939</option>
+                                <option value="1940-1979">1940 à 1979</option>
+                                <option value="1980-1999">1980 à 1999</option>
+                                <option value="2000-{{'now'|date('Y')}}">2000 à aujourd'hui</option>
+                            </select>
+                        </form>
+                    </div>
+                    <div class="divider--gallery divider--large--search divider--dark-grey"></div>
+                    <div class="search-auctions__criteria" data-criteria-type="price">
+                        <h3 class="criteria-title">Prix ($CAD)</h3>
+                        <form action="#" class="criteria-form spacer-top-10">
+                            <div class="price-criteria">
+                                <label for="price-min">Min</label>
+                                <input type="range" id="price-min" name="price-min" min="0" max="10000" value="0" oninput="this.nextElementSibling.value=this.value">
+                                <output>0<output>
+                            </div>
+                            <div class="price-criteria">
+                                <label for="price-max">Max</label>
+                                <input type="range" id="price-max" name="price-max" min="0" max="10000" value="0" oninput="this.nextElementSibling.value=this.value">
+                                <output>0</output>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="divider--gallery divider--large--search divider--dark-grey"></div>
+                    <div class="search-auctions__criteria" data-criteria-type="status">
+                        <h3 class="criteria-title">Statuts des enchères</h3>
+                        <form action="#" class="criteria-form spacer-top-10">
+                            <div class="form-input-checkbox">
+                                <input type="checkbox" id="auction-state-on" name="auction-state-on" value="auction-state-on">
+                                <label for="auction-state-on">Enchères en cours</label>
+                            </div>
+                            <div class="form-input-checkbox">
+                                <input type="checkbox" id="auction-state-come" name="auction-state-come" value="auction-state-come">
+                                <label for="auction-state-on">Enchères à venir</label>
+                            </div>
+                            <div class="form-input-checkbox">
+                                <input type="checkbox" id="auction-state-over" name="auction-state-over" value="auction-state-over">
+                                <label for="auction-state-over">Enchères clôturées</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </aside>
+        <section class="auctions-grid auctions-grid--gallery">
+            <p class="noResult-msg--hidden">Aucune enchère ne correspond à la recherche...</p>
+            {% for auction in auctions %}
+                {% set timeLeft = auction.Auction_date_end|date('U') - 'now'|date('U') %}
+                {% if timeLeft > 0 %}
+                    <article class="auctions-grid-item--gallery">
+                        <div class="tile-img--gallery">
+                            <img src="{{ auction.Stamp_main_image }}" alt="image du timbre">
+                        </div>
+                        <div class="tile-text-content--gallery">
+                            <div class="text-content-top--gallery">
+                                <div class="tile-title">
+                                    <h3>{{ auction.Stamp_name }}</h3>
+                                    <h2>{{ auction.Stamp_country_origin }}</h2>
+                                </div>
+                                <div class="divider--gallery divider--small divider--light-grey"></div>
+                                <div class="tile-stamp-origin">
+                                    <p><span>Région d'origine:</span>{{ auction.Stamp_region_origin }}</p>
+                                </div>
+                                <div class="tile-stamp-status">
+                                    <p><span>Condition:</span>{{ auction.Stamp_condition }}</p>
+                                </div>
+                                <div class="tile-stamp-year">
+                                    <p><span>Année d'émission:</span>{{ auction.Stamp_year }}</p>
+                                </div>
+                                <div class="divider--gallery divider--small divider--light-grey"></div>
+                            </div>
+                            <div class="text-content-middle--gallery">
+                                <div class="tile-price-img--gallery">
+                                <img src="./assets/icons/price-b.png" alt="bid logo">
+                                </div>
+                                <div class="tile-bid">
+                                    <p>${{ auction.Auction_starting_price }}</p>
+                                </div>
+                            </div>
+                            <div class="text-content-bottom--gallery">
+                                <div class="auctions-grid-item-status--gallery">
+                                    <p>{{ auction.Auction_status }}</p>
+                                    {% if auction.Auction_date_start|date('U') <= 'now'|date('U', 'America/New_York') %}
+                                        {% set daysLeft = ((auction.Auction_date_end|date('U') - 'now'|date('U')) / 60 / 60 / 24) %}
+                                        {% if daysLeft < 1 %}
+                                           <p>Termine aujourd'hui</p>
+                                        {% else %}
+                                            <p>Termine dans: {{ daysLeft|number_format }} jour{{daysLeft|number_format == 1 ? '' : 's'}}</p>
+                                        {% endif %}
+                                    {% else %}
+                                        {% set daysLeft = ((auction.Auction_date_start|date('U') - 'now'|date('U')) / 60 / 60 / 24) %}
+                                        {% if daysLeft > 1 %}
+                                            <p>Commence dans: {{ daysLeft|number_format }} jour{{ daysLeft|number_format > 1 ? 's' : '' }}</p>
+                                        {% else %}  
+                                            <p>Commence demain</p>
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                                <div class="tile-favorite">
+                                    <img class="favorite-btn" src="./assets/icons/heart2.png" alt="logo favori">
+                                </div>
+                            </div>
+                        </div>
+                        <a class="extended-link" href="./?entity=auction&auctionId={{ auction.Stamp_auction_id }}"><img src="./assets/icons/bidding.png" alt="bidding logo"><span class="arrow">&raquo;</span></a>
+                    </article>
+                {% else %}
+                    <article class="auctions-grid-item--gallery">
+                        <div class="tile-img--gallery">
+                            <img src="{{ auction.Stamp_main_image }}" alt="image du timbre">
+                        </div>
+                        <div class="tile-text-content--gallery">
+                            <div class="text-content-top--gallery">
+                                <div class="tile-title">
+                                    <h3>{{ auction.Stamp_name }}</h3>
+                                    <h2>{{ auction.Stamp_country_origin }}</h2>
+                                </div>
+                                <div class="divider--gallery divider--small divider--light-grey"></div>
+                                <div class="tile-stamp-origin">
+                                    <p><span>Région d'origine:</span>{{ auction.Stamp_region_origin }}</p>
+                                </div>
+                                <div class="tile-stamp-status">
+                                    <p><span>Condition:</span>{{ auction.Stamp_condition }}</p>
+                                </div>
+                                <div class="tile-stamp-year">
+                                    <p><span>Année d'émission:</span>{{ auction.Stamp_year }}</p>
+                                </div>
+                                <div class="divider--gallery divider--small divider--light-grey"></div>
+                            </div>
+                            <div class="text-content-middle--gallery">
+                                <div class="tile-price-img--gallery">
+                                    <img src="./assets/icons/price-sold.png" alt="bid logo">
+                                </div>
+                                {% if auction.Auction_highest_bid != null %}
+                                    <div class="tile-bid">
+                                        <p class="tile-bid--sold">Vendu ${{ auction.Auction_highest_bid }}</p>
+                                    </div>
+                                {% else %}
+                                    <div class="tile-bid">
+                                        <p class="tile-bid--sold">Non vendu</p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="text-content-bottom--gallery">
+                                <div class="auctions-grid-item-status--gallery">
+                                    <p class="closed">{{ auction.Auction_status }}</p>
+                                </div>
+                                <div class="tile-favorite">
+                                </div>
+                            </div>
+                        </div>
+                        <a class="extended-link" href="./?entity=auction&auctionId={{ auction.Stamp_auction_id }}"><img src="./assets/icons/bidding.png" alt="bidding logo"><span class="arrow">&raquo;</span></a>
+                    </article>
+                {% endif %}
+            {% endfor %}
+        </section>
+    </main>

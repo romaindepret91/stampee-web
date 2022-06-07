@@ -1,0 +1,69 @@
+<script>history.pushState({}, '', './?entity=myAuctionsSales')</script>
+<main>
+    <section class="my-auctions-sales">
+        <h1 class="my-auctions-sales-title">{{ title }}</h1>
+         <p class="my-auctions-sales-msg">{{ message }}</p>
+        {% if myAuctionsSales%}
+            {% for myAuctionSale in myAuctionsSales %}
+                <div class="my-auction-sale-wrapper">
+                    {% if myAuctionSale.Auction_status == 'Vente clôturée' %}
+                        <div class="my-auction-sale" style="opacity:.5">
+                    {% else %}
+                        <div class="my-auction-sale">
+                    {% endif %}
+                        <div class="my-auction-sale-content">
+                            <div class="my-auction-sale-info">
+                                <div class="my-auction-sale-info-container">
+                                    <h3 class="my-auction-sale-title">{{ myAuctionSale.Stamp_name }}</h3>
+                                    <p class="my-auction-sale-country">{{ myAuctionSale.Stamp_country_origin }}</p>
+                                </div>
+                                <div class="my-auction-sale-info-container">
+                                    <p class="my-auction-sale-info-item"><span class="my-auction-sale-info-label">Date de début d'enchère:</span>{{ myAuctionSale.Auction_date_start }}</p>
+                                    <p class="my-auction-sale-info-item"><span class="my-auction-sale-info-label">Date de fin d'enchère:</span>{{ myAuctionSale.Auction_date_end }}</p>
+                                    <p class="my-auction-sale-info-item"><span class="my-auction-sale-info-label">Prix:</span>${{ myAuctionSale.Auction_starting_price }}</p>
+                                </div>
+                                <div class="my-auction-sale-info-container">
+                                    <p class="my-auction-sale-info-item"><span class="my-auction-sale-info-label">Enchère la plus haute:</span>${{ myAuctionSale.Auction_highest_bid ? myAuctionSale.Auction_highest_bid : 0 }}</p>
+                                    <p class="my-auction-sale-info-item"><span class="my-auction-sale-info-label">Nombre de mises:</span>{{ myAuctionSale.Auction_bids_number ? myAuctionSale.Auction_bids_number : 0 }}</p>
+                                </div>
+                            </div>
+                            {% if myAuctionSale.Auction_date_start|date('d/m/Y H:i:s') <= 'now'|date('d/m/Y H:i:s', 'America/New_York') %}
+                                <div class="my-auction-sale-btns" style="pointer-events:none; opacity:.5;">
+                            {% else %}
+                                <div class="my-auction-sale-btns">
+                            {% endif %}
+                                <button class="my-auction-sale-btn btn btn--light-blue"><a href="./?entity=myAuctionsSales&action=update&auctionId={{ myAuctionSale.Stamp_auction_id }}">Modifier</a></button>
+                                <button class="my-auction-sale-btn btn btn--light-blue"><a class="toConfirmDelete" data-href="./?entity=myAuctionsSales&action=delete&auctionId={{ myAuctionSale.Stamp_auction_id }}">Supprimer</a></button>
+                            </div>
+                        </div>
+                        <div class="my-auction-sale-img">
+                            <img src="{{ myAuctionSale.Stamp_main_image }}" alt="auction image">
+                        </div>
+                    </div>
+                    {% if myAuctionSale.Auction_status == 'Vente clôturée' %}
+                        <div class="my-auction-sale-status" style="flex-direction:column;">
+                            <p style="color:#AD0000;">Vente terminée</p>
+                            {% if myAuctionSale.Auction_highest_bid %}
+                                <p style="margin-top:10px;font-size:1.3rem;">Vendu: ${{ myAuctionSale.Auction_highest_bid }}</p>
+                            {% else %}
+                                <p style="margin-top:10px;font-size:1.3rem;">Non vendu</p>
+                            {% endif %}
+                        </div>
+                    {% elseif myAuctionSale.Auction_status == 'En cours' %}
+                        <div class="my-auction-sale-status">
+                            <p>En cours</p>
+                            <img src="assets/icons/hourglass.png" style="width:45px;">
+                        </div>
+                    {% else %}
+                        <div class="my-auction-sale-status">
+                            <p>À venir</p>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-sale"><i>Aucune vente à afficher.</i></p>
+        {% endif %}
+        {{ include("deletionModal.twig") }}
+    </section>
+</main>

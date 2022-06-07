@@ -1,0 +1,112 @@
+
+.upload-auction-form {
+    padding: calc(var(--space-base) * 4) calc(var(--space-base) * 3) 0 calc(var(--space-base) * 3);
+
+    &:after {
+        content: '';
+        position: absolute;
+        left: 26%;
+        top: 10%;
+        width: 74%;
+        height: 90%;
+        background-image: url('../../assets/img/logo-bg.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: .05;
+        z-index: -1;
+    }
+
+    & > .form-title {
+        font-family: $font-tertiary;
+    }
+
+    & > .form {
+        display: flex;
+        flex-direction: column;
+        margin-top: var(--space-base);
+
+        & > .form-input {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            width: 90vw;
+            margin-top: 20px;
+
+            @media only screen and(min-width: $tablet){
+                width: 70vw;
+            }
+
+            @media only screen and(min-width: $desktop-large){
+                width: 50vw;
+            }
+
+            & > .text-input {
+                width: 60%;
+            }
+
+            & > .select-input {
+                width: 40%;
+            }
+
+            & > .form-input-content {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                width: 20%;
+
+                & > .radio-input {
+                    appearance: auto;
+                }
+            }
+
+            & > .error-msg {
+                position: absolute;
+                left: 51vw;
+                width: fit-content;
+                color: $color-red-dark;
+            }
+
+            & > .wrapper {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 60%;
+
+                & > .current-img {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    & > img {
+                        width: 80px;
+                    }
+    
+                    & > span {
+                        font-size: calc(var(--font-size-default) * .6);
+                        margin-top: 2px;
+                        font-style: italic;
+                    }
+                }
+
+            }
+
+
+            & > label {
+                font-weight: $font-weight-medium;
+            }
+         }
+
+         & > .form-actions {
+            width: 15%;
+            display: flex;
+            justify-content: space-between;
+
+            & > * {
+                font-weight: $font-weight-heavy;
+                padding: 10px 20px;
+                margin-top: calc(var(--space-base) * 2);
+            }
+         }
+    }
+}

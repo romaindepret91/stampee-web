@@ -1,0 +1,58 @@
+<script>history.pushState({}, '', './?entity=myAuctionsBids')</script>
+<main>
+    <section class="my-auctions-bids">
+        <h1 class="my-auctions-bids-title">{{ title }}</h1>
+         <p class="my-auctions-bids-msg">{{ message }}</p>
+        {% if myAuctions %}
+            {% for myAuction in myAuctions %}
+                <div class="my-auction-bid-wrapper">
+                    {% if myAuction.Auction_status == 'Vente clôturée' %} 
+                        <div class="my-auction-bid" style="opacity:.5;">
+                    {% else %}
+                        <div class="my-auction-bid">
+                    {% endif %}
+                        <div class="my-auction-bid-content">
+                            <div class="my-auction-bid-info">
+                                <div class="my-auction-bid-info-container">
+                                    <h3 class="my-auction-bid-title">{{ myAuction.Stamp_name }}</h3>
+                                    <p class="my-auction-bid-country">{{ myAuction.Stamp_country_origin }}</p>
+                                    <p class="my-auction-bid-id">Id: {{ myAuction.Auction_id }}</p>
+                                </div>
+                                <div class="my-auction-bid-info-container">
+                                    <p class="my-auction-bid-info-item"><span class="my-auction-bid-info-label">Date de début d'enchère:</span>{{ myAuction.Auction_date_start }}</p>
+                                    <p class="my-auction-bid-info-item"><span class="my-auction-bid-info-label">Date de fin d'enchère:</span>{{ myAuction.Auction_date_end }}</p>
+                                    <p class="my-auction-bid-info-item"><span class="my-auction-bid-info-label">Prix:</span>${{ myAuction.Auction_starting_price }}</p>
+                                </div>
+                                <div class="my-auction-bid-info-container">
+                                    <p class="my-auction-bid-info-item"><span class="my-auction-bid-info-label">Enchère la plus haute:</span>${{ myAuction.Auction_highest_bid ? myAuction.Auction_highest_bid : 0 }}</p>
+                                    <p class="my-auction-bid-info-item"><span class="my-auction-bid-info-label">Nombre de mises:</span>{{ myAuction.Auction_bids_number ? myAuction.Auction_bids_number : 0 }}</p>
+                                    <p class="my-auction-bid-info-item"><span class="my-auction-bid-info-label">Ma mise du {{myAuction.bid_date|date('d/m/Y')}}: </span>${{ myAuction.my_highest_bid }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="my-auction-bid-img">
+                            <img src="{{ myAuction.Stamp_main_image }}" alt="auction image">
+                        </div>
+                    </div>
+                    {% if myAuction.Auction_status == 'Vente clôturée' %}
+                        <div class="my-auction-bid-status">
+                            <p style="color:#AD0000;">Vente terminée</p>
+                            {% if myAuction.my_highest_bid == myAuction.Auction_highest_bid %}
+                                <p style="color:#272727;font-weight:500;">Vous avez remporté cette enchère!</p>
+                            {% endif %}
+                        </div>
+                    {% else %}
+                        <div class="my-auction-bid-status">
+                            <p>En cours</p>
+                            {% if myAuction.my_highest_bid == myAuction.Auction_highest_bid %}
+                                <p style="color:green;">Votre mise est actuellement la plus élevée</p>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-sale"><i>Aucune mise à afficher.</i></p>
+        {% endif %}
+    </section>
+</main>

@@ -1,0 +1,22 @@
+
+.header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  background-color: $color-light-blue;
+  height: 90px;
+  width: 100%;
+}
+
+.header-bottom {
+  display: flex;
+  align-items: center;
+  background-color: $color-dark-blue;
+  height: 180px;
+  width: 100%;
+}

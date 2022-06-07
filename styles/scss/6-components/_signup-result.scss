@@ -1,0 +1,35 @@
+
+.signup-result {
+    padding: calc(var(--space-base) * 4) calc(var(--space-base) * 3) 0 calc(var(--space-base) * 3);
+
+    &:after {
+        content: '';
+        position: absolute;
+        left: 26%;
+        top: 220px;
+        width: 74%;
+        height: 700px;
+        background-image: url('../../assets/img/logo-bg.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: .05;
+        z-index: -1;
+    }
+
+    & > .signup-result-title {
+        font-family: $font-tertiary;
+    }
+
+    & > .signup-result-msg {
+        margin-top: var(--space-base);
+    }
+
+    & > .signup-result-btn {
+        padding: 10px;
+        margin-top: calc(var(--space-base) * 2);
+
+        & > a {
+            font-weight: $font-weight-heavy;
+        }
+    }
+}

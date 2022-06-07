@@ -1,0 +1,64 @@
+
+
+.divider {
+
+    &--gallery {
+        height: 1px;
+        margin: 0 auto;
+    }
+   
+    &--list {
+       display: none;
+    }
+
+    &--home-grid {
+        height: 1px;
+        grid-column: 3 / 7;
+        margin: calc(var(--space-base) * 4) 0;
+
+        @media only screen and(min-width: $tablet){
+            margin: 0;
+        }
+
+        &--mobile {
+            display: block;
+
+            @media only screen and(min-width: $tablet){
+                display: none;
+            }
+        }
+    }
+
+    &--small {
+        width: 50%;
+    }
+
+    &--large {
+        height: 1px;
+        width: 70%;
+        margin: calc(var(--space-base) * 1.2) auto;
+
+        &--search {
+            margin: calc(var(--space-base) * 2) auto;
+            width: 70%;
+        }
+    }
+
+    &--vertical {
+        height: 80%;
+        width: 1px;
+        margin: auto 0;
+    }
+
+    &--light-grey {
+        background-color: $color-light-grey;
+    }
+
+    &--dark-grey {
+        background-color: $color-grey;
+    }
+
+    &--white {
+        background-color: $color-white;
+    }
+}

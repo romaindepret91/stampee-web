@@ -1,0 +1,48 @@
+
+.home-grid-item {
+
+    &--one {
+        grid-column: 1 / 9;
+        height: 80vh;
+        background-color: $color-black;
+    }
+    &--two {
+        grid-column: 1 / 9;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: calc(var(--space-base) * 3);
+        padding: 0 calc(var(--space-base) * 3);
+
+        @media only screen and(min-width: $mobile-large){
+            grid-column: 2 / 8;
+        }
+        
+        @media only screen and(min-width: $tablet){
+            grid-column: 1 / 9;
+            flex-direction: row;
+        }
+    }
+
+    &--three {
+        grid-column: 1 / 9;
+
+        @media only screen and(min-width: $tablet){
+            grid-column: 1 / 3;
+        }
+
+    }
+
+    &--four {
+        grid-column: 1 / 9;
+
+        @media only screen and(min-width: $tablet){
+            grid-column: 3 / 9;
+        }
+
+    }
+
+    &--five {
+        grid-column: 2 / 8;
+    }
+}

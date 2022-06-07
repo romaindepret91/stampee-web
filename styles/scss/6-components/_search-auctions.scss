@@ -1,0 +1,104 @@
+
+.search-auctions__tile {
+    background-color: $color-light-grey;
+    margin: calc(var(--space-base) * 2);
+    border-radius: 3px;
+}
+
+.search-auctions__title {
+    font-size: calc(var(--font-size-default) * 1);
+    font-family: $font-tertiary;
+    background-color: $color-dark-blue;
+    padding: calc(var(--space-base) * 2) var(--space-base);
+    color: $color-white;
+    border-radius: 3px 3px 0 0;
+    text-align: center;
+}
+
+.search-auctions__content {
+    padding: calc(var(--space-base) * 2);
+    background-color: $color-light-grey;
+}
+
+.criteria-title {
+    font-size: calc(var(--font-size-default) * 1);
+    font-family: $font-tertiary;
+}
+
+.criteria-form {
+    display: flex;
+    flex-direction: column;
+    font-size: calc(var(--font-size-default) * .75);
+    font-weight: $font-weight-default;
+
+    & > .form-input-checkbox, & > .price-criteria {
+        display: flex;
+        align-items: center;
+    }
+
+    & > .form-input-checkbox + .form-input-checkbox, & .price-criteria + .price-criteria {
+        margin-top: 1vw;
+    }
+}
+
+.form-input-checkbox > input, .price-criteria > input {
+    margin-right: 1vw;
+}
+
+.form-input-checkbox > input[type="checkbox"] {
+    display: inline-block;
+    background-color: $color-light-blue;
+    width: 15px;
+    height: 15px;
+    
+    &:checked {
+        background-color: $color-dark-blue;
+    }
+}
+
+.price-criteria > input[type="range"]::-webkit-slider-thumb {
+    box-shadow: 1px 1px 1px $color-dark-blue;
+    border: 1px solid $color-dark-blue;
+    height: 100%;
+    width: 17px;
+    border-radius: 5px;
+    background: $color-light-blue;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+.price-criteria {
+
+    & > input[type=range]::-webkit-slider-runnable-track {
+        width: 100%;
+        cursor: pointer;
+        height: 12px;
+        box-shadow: 1px 1px 1px #000000;
+        background: $color-dark-blue;
+        border-radius: 5px;
+        border: 1px solid #000000;
+    }
+    
+    & > label {
+        margin-right: 10px;
+        width: 2vw;
+    }
+} 
+
+#period-select {
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    padding: 5px;
+    background-color: $color-light-blue;
+
+    & > option {
+        padding: 6px;
+        font-size: calc(var(--font-size-default) * .75);
+        font-weight: $font-weight-default;
+
+        &:checked, &:hover {
+            background-color: $color-white;
+        }
+    }
+}

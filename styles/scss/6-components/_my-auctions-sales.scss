@@ -1,0 +1,145 @@
+
+.my-auctions-sales {
+    padding: calc(var(--space-base) * 4);
+
+    & > .my-auctions-sales-title {
+        font-size: calc(var(--font-size-default) * 1.4);
+    }
+
+    & > .my-auction-sale-wrapper {
+        display: flex;
+        align-items: stretch;
+        margin-top: calc(var(--space-base) * 2);
+
+        & > .my-auction-sale {
+            display: flex;
+            justify-content: space-between;
+            border: solid 1px $color-light-grey;
+            padding: var(--space-base);
+            width: 90%;
+
+            @media only screen and(min-width: $desktop-xlarge){
+                width: 80%;
+            }
+    
+            & > .my-auction-sale-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                flex-grow: 1;
+    
+                & > .my-auction-sale-info { 
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    width: 95%;
+
+                    @media only screen and(min-width: $desktop-xlarge){
+                        width: 90%;
+                    }
+    
+                   & > .my-auction-sale-info-container {
+                       display: flex;
+                       flex-direction: column;
+                       margin-top: 5px;
+    
+                       &:first-child {
+                           width: 100%;
+                       }
+    
+                       &:nth-child(2), &:nth-child(3) {
+                            width: 49%;
+
+                        @media only screen and(min-width: $desktop-xlarge){
+                            width: 45%;
+                    }
+                       }
+    
+                       & > .my-auction-sale-info-item {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        font-size: calc(var(--font-size-default) * .7);
+                        margin-top: 5px;
+
+                        @media only screen and(min-width: $desktop-xlarge){
+                            font-size: calc(var(--font-size-default) * .8);
+                        }
+    
+                        & > .my-auction-sale-info-label {
+                            font-weight: $font-weight-medium;
+                        }
+                       }
+                   }
+                }
+    
+                & > .my-auction-sale-btns {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 40%;
+                    margin-top: 15px;
+
+                    @media only screen and(min-width: $desktop-large){
+                        width: 30%;
+                    }
+
+                    @media only screen and(min-width: $desktop-xlarge){
+                        width: 22%;
+                    }
+    
+                    & > .my-auction-sale-btn {
+                        padding: 5px 15px;
+                        width: minmax(150px, fitcontent);
+    
+                        & > a {
+                            font-size: calc(var(--font-size-default) * .8);
+                        }
+                    }
+                }
+            }
+    
+            & > .my-auction-sale-img {
+                display: flex;
+                justify-content: center;
+                width: 200px;
+                height: 200px;
+
+                @media only screen and(min-width: $desktop-xlarge){
+                    width: 220px;
+                    height: 220px;
+                }
+    
+                & > img {
+                    object-fit: contain;
+                }
+            }
+        }
+    
+        & > .my-auction-sale-status {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $color-xlight-grey;
+
+            @media only screen and(min-width: $desktop-large){
+                width: 10%;
+            }
+
+            @media only screen and(min-width: $desktop-xlarge){
+                width: 20%;
+            }
+
+            & > p {
+                text-align: center;
+                font-size:calc(var(--font-size-default) * 1);
+                font-weight: $font-weight-medium;
+            }
+        }
+
+    }
+}
+
+.no-sale {
+    margin-top: var(--space-base);
+}

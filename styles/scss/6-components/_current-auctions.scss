@@ -1,0 +1,45 @@
+
+
+.current-auctions {
+    padding-right: calc(var(--space-base) * 3);
+    padding-left: calc(var(--space-base) * 3);
+
+    @media only screen and(min-width: $tablet){
+        padding-left: 0;
+    }
+
+    & > .current-auctions-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media only screen and(min-width: $tablet){
+           justify-content: flex-start;
+        }
+
+        & > img {
+            width: 20px;
+            height: 20px;
+            margin-left: 1vw;
+
+            @media only screen and(min-width: $mobile-large){
+                margin-left: 1vw;
+            }
+
+            @media only screen and(min-width: $desktop-large){
+                width: 25px;
+                height: 25px;
+            }
+        }
+
+        & > h2 {
+            font-family: $font-tertiary;
+            color: $color-dark-blue;
+
+            @media only screen and(min-width: $tablet){
+                font-size: calc(var(--font-size-default)* 1.2);
+            }
+        }
+    }
+}
+

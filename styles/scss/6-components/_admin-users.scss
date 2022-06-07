@@ -1,0 +1,66 @@
+.admin-users-list {
+    display: grid;
+    grid-template-columns: repeat(6, max-content);
+    grid-gap: var(--space-base);
+    font-size: calc(var(--font-size-default) * .9);
+    margin-top: calc(var(--space-base) * 2);
+
+    & > .admin-users-list-title, & > .admin-users-list-item {
+        display: flex;
+        justify-content: center;
+    }
+
+    & > .admin-users-list-title {
+        font-weight: $font-weight-heavy;
+        border: 1px solid $color-grey;
+        border-radius: 3px;
+        padding: 10px 20px;
+    }
+
+    & > .admin-users-list-item {
+        display: flex;
+        align-items: center;
+        border-radius: 3px;
+        padding: 10px 20px;
+        background-color: $color-light-grey;
+    }
+
+    & > .admin-users-list-item__actions {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: $color-light-grey;
+
+        & > .toConfirmDelete {
+            cursor: pointer;
+        }
+
+        & > a:hover {
+            opacity: .6;
+        }
+        
+        & > * + * {
+            margin-left: 20px;
+        }
+    }
+}
+
+.admin-users-add {
+    margin-top: var(--space-base);
+
+    & > a {
+        font-weight: $font-weight-heavy;
+    }
+}
+
+.admin-users-msg {
+    position: absolute;
+
+    &.done {
+        color: green;
+    }
+
+    &.failed {
+        color: $color-red-dark;
+    }
+}

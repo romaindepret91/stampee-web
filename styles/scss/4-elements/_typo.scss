@@ -1,0 +1,39 @@
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-tertiary;
+    letter-spacing: $letter-spacing-large;
+}
+
+h1 {
+    font-size: calc(var(--font-size-default) * 1.5);
+}
+
+h2 {
+    font-size: calc(var(--font-size-default) * 1.3);
+}
+
+h3 {
+    font-size: calc(var(--font-size-default) * 1.2);
+}
+
+h4 {
+    font-size: calc(var(--font-size-default) * 1.1);
+}
+
+h5 {
+    font-size: calc(var(--font-size-default) * 1);
+}
+
+p, span, a, button, li, label, input{
+    font-family: $font-primary;
+    font-size: calc(var(--font-size-default) * .9);
+    font-weight: $font-weight-default;
+    line-height: $line-height-normal;
+}
+
+

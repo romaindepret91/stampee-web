@@ -1,0 +1,167 @@
+/*------------------------------------*\
+  purify / generic
+\*------------------------------------*/
+
+/*
+  1. Inherit box-sizing which is set to border-box on :root element to prevent width/padding issues.
+  2. Change the default font family in all browsers.
+  3. Set a default font-size for root in all browsers.
+  4. Set a fixed line height in all browsers.
+  5. Prevent adjustments of font size after orientation changes on Windows Phone/IOS.
+  6. Setting @viewport causes scrollbars to overlap content in IE11 and Edge, so
+     we force a non-overlapping, non-auto-hiding scrollbar to counteract.
+  7. Change the default tap highlight to be completely transparent in iOS.
+  8. Set the font smoothing for osx/webkit
+  9. Everything simply inherit of the box-sizing as it is easier to override
+      without over specifying if required
+  10. Text selection 
+=============================================================================*/
+
+
+:root {
+    box-sizing: border-box;
+    font-family: $font-primary;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar;
+    -webkit-tap-highlight-color: $color-black;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+  
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+  
+/* Sections
+ ========================================================================== */
+  
+/**
+ * Remove the margin in all browsers.
+ */
+  
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Text-level semantics
+ ========================================================================== */
+ 
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+  
+b,
+strong {
+    font-weight: 600;
+}
+  
+/**
+ * Add the correct font size in all browsers.
+ */
+
+small {
+    font-size: 80%;
+}
+  
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+sup {
+    top: -0.5em;
+}
+
+
+/* Embedded content
+ ========================================================================== */
+
+/**
+ * Sets max-width: 100% since we're mostly working within grids. 
+ */
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+ 
+/* Forms
+ ========================================================================== */
+  
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ * 3. Prevents border-radius on inputs
+ */
+  
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: $line-height-default;
+    margin: 0;
+    outline: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button,
+select {
+    text-transform: none;
+}
+  
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+    [type='button']::-moz-focus-inner,
+    [type='reset']::-moz-focus-inner,
+    [type='submit']::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+  
+/**
+ * Correct the padding in Firefox.
+ */
+
+fieldset {
+    padding: 0.35em 0.75em 0.625em;
+}

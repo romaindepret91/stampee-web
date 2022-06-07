@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteRule ^.*php$ index.php [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . index.php [L]
+php_value post_max_size 20M
+php_value upload_max_filesize 20M

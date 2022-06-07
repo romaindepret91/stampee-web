@@ -1,0 +1,33 @@
+<script>history.pushState({}, '', 'admin')</script>
+<section class="admin-users">
+    <h2 class="admin-users-title">{{ title }}</h2>
+    <div class="admin-users-add">
+        <a href="?action=addUserForm">+ Ajouter un utilisateur</a>
+    </div>
+    <div class="admin-users-msg {{ resultClass }}">{{ message }}</div>
+    <div class="admin-users-list">
+        <div class="admin-users-list-title">Id</div>
+        <div class="admin-users-list-title">Prénom</div>
+        <div class="admin-users-list-title">Nom</div>
+        <div class="admin-users-list-title">Courriel</div>
+        <div class="admin-users-list-title">Profil</div>
+        <div class="admin-users-list-title">Actions</div>
+    {% for user in users %}
+        <div class="admin-users-list-item">{{ user.User_id }}</div>
+        <div class="admin-users-list-item">{{ user.User_firstname }}</div>
+        <div class="admin-users-list-item">{{ user.User_lastname }}</div>
+        <div class="admin-users-list-item">{{ user.User_email }}</div>
+        {% if user.Role_id == constant('user::ROLE_ADMIN') %}
+            <div class="admin-users-list-item">Administrateur</div>
+        {% endif %}
+        {% if user.Role_id == constant('user::ROLE_MEMBER') %}
+            <div class="admin-users-list-item">Membre</div>
+        {% endif %}
+        <div class="admin-users-list-item__actions">
+            <a href="?action=update&userId={{ user.User_id }}">Modifer</a>
+            <a class="toConfirmDelete" data-href="?action=delete&userId={{ user.User_id }}">Supprimer</a>
+            <a href="?action=password&userId={{ user.User_id }}">Générer mot de passe</a>
+        </div>
+    {% endfor %}
+    </div>
+</section>

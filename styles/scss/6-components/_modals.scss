@@ -1,0 +1,127 @@
+
+#biddingModal {
+    background-color: $color-white;
+    width: 450px;
+    height: 300px;
+    padding: calc(var(--space-base) * 2);
+
+    & > .biddingModal-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        & > .biddingModal-title {
+            font-size: var(--font-size-default);
+        }
+
+        & > .bidding-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: var(--space-base);
+
+            & .text-input {
+                padding: 10px 15px;
+            }
+    
+            & > .bidding-form-btns {
+                margin-top: var(--space-base);
+    
+                & > button {
+                    font-size: calc(var(--font-size-default) * .9);
+                    padding: 10px 15px;
+                }
+            }
+        }
+    }
+}
+
+#logInModal {
+    background-color: $color-white;
+    width: 600px;
+    height: 200px;
+    padding: calc(var(--space-base) * 2);
+
+    & > .logInModal-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        & > .logInModal-title {
+            font-size: var(--font-size-default);
+        }
+
+        & > .logInModal-btns {
+            margin-top: var(--space-base);
+
+            & > button {
+                font-size: calc(var(--font-size-default) * .9);
+                padding: 10px 15px;
+            }
+        }
+    }
+}
+
+#deletionModal {
+    background-color: $color-white;
+    width: 400px;
+    height: 200px;
+    padding: calc(var(--space-base) * 2);
+
+    & > .deletionModal-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        & > .deletionModal-title {
+            font-size: var(--font-size-default);
+        }
+
+        & > .deletionModal-btns {
+            margin-top: var(--space-base);
+
+            & > button {
+                font-size: calc(var(--font-size-default) * .9);
+                padding: 10px 15px;
+            }
+        }
+    }
+}
+
+#logOutModal {
+    background-color: $color-white;
+    width: 600px;
+    height: 200px;
+    padding: calc(var(--space-base) * 2);
+
+    & > .logOutModal-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        & > .logOutModal-title {
+            font-size: var(--font-size-default);
+        }
+
+        & > .logOutModal-btns {
+            margin-top: var(--space-base);
+
+            & > button {
+                font-size: calc(var(--font-size-default) * .9);
+                padding: 10px 15px;
+            }
+        }
+    }
+}
+
+.toConfirm:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,104 @@
+
+.details-grid-item {
+
+    &--one {
+        grid-column: 1 / 3;
+        grid-row: 2;
+        display: flex;
+        flex-direction: column;
+
+        @media only screen and(min-width: $tablet){
+            grid-column: 1 / 2;
+            grid-row: 1;
+        }
+        
+        & > * + * {
+            margin-top: calc(var(--space-base) * 2);
+        }
+
+        & > .item-img--small {
+            
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        
+        & > .item-img--small:first-child {
+            border: solid 2px $color-light-grey;
+        }
+    }
+
+    &--two {
+        grid-column: 3 / 9;
+        grid-row: 2;
+
+        @media only screen and(min-width: $tablet){
+            grid-column: 2 / 6;
+            grid-row: 1 / 2;
+        }
+    }
+
+    &--three {
+        grid-column: 1 / 9;
+        grid-row: 1 / 2;
+
+        @media only screen and(min-width: $tablet){
+            grid-column: 6 / 9;
+            grid-row: 1;
+        }
+    }
+
+    &--four {
+        grid-column: 1 / 9;
+        grid-row: 3;
+        background-color: $color-white;
+        border: solid 1px $color-light-grey;
+        border-radius: 3px;
+
+        @media only screen and(min-width: $tablet){
+            grid-column: 1 / 9;
+            grid-row: 2;
+        }
+    }
+
+    &--five {
+        grid-column: 1 / 9;
+        grid-row: 4 / 5;
+
+        @media only screen and(min-width: $tablet){
+            grid-column: 1 / 9;
+            grid-row: 3 / 5;
+        }
+
+        & > .title-other-auctions > h2 {
+            text-align: center;
+            color: $color-dark-blue;
+            line-height: $line-height-default;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+.item-img--large {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: $color-white-lighter;
+    border: solid 1px $color-light-grey;
+    border-radius: 3px;
+    overflow: hidden;
+     
+    & > img {
+        height: 70%;
+        width: 70%;
+        object-fit: contain;
+        transition: transform $ease-basic .8s;
+
+        &:hover {
+            transform: scale(2);
+            cursor: zoom-in;
+        }
+    } 
+}

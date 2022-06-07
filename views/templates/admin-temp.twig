@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="Projet Web 1: Site d'enchères de timbres - Page Admin">
+    <meta name="Author" content="Romain Depret">
+    <link rel="stylesheet" type="text/css" href="./styles/css/main.css">
+    <title>{{ title }}</title>
+    <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.ico">
+</head>
+<body class="admin-temp-body">
+    <header class="admin-temp-header">
+        <img class="logo-img" src="./assets/img/logo.png" alt="logo Stampee" />
+        <h1 class="admin-temp-title">Interface Administration</h1>
+    </header>
+    <aside class="admin-temp-menu">
+        <div class="admin-temp-menu-head">
+            <p>{{ oAdminConnected.User_firstname }} {{ oAdminConnected.User_lastname }}</p>
+            <a href="admin?entity=log&action=logOut">Déconnexion</a>
+        </div>
+        <div class="divider--gallery divider--large--search divider--white"></div>
+        <nav class="admin-temp-menu-nav">
+         <ul class="admin-temp-menu-nav-list">
+            <li class="admin-temp-menu-nav-list__item"><a href="admin">Membres</a></li>
+            <li class="admin-temp-menu-nav-list__item"><a href="#">Timbres</a></li>
+            <li class="admin-temp-menu-nav-list__item"><a href="#">Enchères</a></li>
+         </ul>
+        </nav>
+    </aside>
+    <main class="admin-temp-content">
+        {{ include("deletionModal.twig") }}
+        {{ include(templateMain) }}
+    </main>
+</body>
+</html>

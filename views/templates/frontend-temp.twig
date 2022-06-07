@@ -1,0 +1,163 @@
+{{ include("logOutModal.twig") }}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="Projet Web 1: Site d'enchères de timbres">
+    <meta name="Author" content="Romain Depret">
+    <link rel="stylesheet" type="text/css" href="./styles/css/main.css">
+    <title>{{ title }}</title>
+    <link rel="icon" type="image/x-icon" href="./assets/icons/favicon.ico">
+    <script type="module" src="./scripts/main.js"></script>
+</head>
+<body>
+    <header class="header">
+        <section class="menu-mobile disabled">
+            <img class="logo-img" src="./assets/img/logo.png" alt="logo Stampee" />
+            <ul class="menu-mobile__menu-top">
+                <li class="menu-mobile__item"><a href="#">Comment ça marche?</a></li>
+                <li class="menu-mobile__item"><a href="./?entity=catalogue">Catalogue</a> </li>
+                <li class="menu-mobile__item"><a href="#">Le Magazine de la Philatélie</a></li>
+            </ul>
+            <ul class="menu-mobile__menu-bottom">
+                <li class="menu-mobile__item"><a href="#">À propos de Lord Reginald Stampee III</a></li>
+                <li class="menu-mobile__item"><a href="#">Contactez-nous</a></li>
+                <li class="menu-mobile__item"><a href="#">Termes et conditions</a> </li>
+                <li class="menu-mobile__item"><a href="#">Aide</a></li>
+            </ul>
+        </section>
+        <section class="header-top">
+            <nav class="nav-top">
+                <div class="menu-burger">
+                    <svg class="burger-icon" enable-background="new 0 0 59.002 48.465" viewbox="0 0 59.002 60.58125" xmlns="http://www.w3.org/2000/svg"><switch><foreignobject height="1" requiredextensions="http://ns.adobe.com/AdobeIllustrator/10.0/" width="1"/><g><path d="m3.161 6.322c-1.745 0-3.161-1.416-3.161-3.161 0-1.746 1.416-3.161 3.161-3.161h52.68c1.745 0 3.161 1.415 3.161 3.161 0 1.745-1.416 3.161-3.161 3.161z"/><path d="m3.162 27.394c-1.747 0-3.162-1.415-3.162-3.162 0-1.745 1.415-3.161 3.161-3.161h52.679c1.745 0 3.16 1.416 3.16 3.161 0 1.746-1.415 3.161-3.16 3.161h-52.678z"/><path d="m3.162 48.465c-1.747 0-3.162-1.416-3.162-3.162 0-1.745 1.415-3.16 3.162-3.16h52.678c1.746 0 3.162 1.415 3.162 3.16 0 1.746-1.416 3.162-3.162 3.162z"/></g></switch></svg>
+                    <svg class="cross-icon" viewbox="0 0 100 125" xmlns="http://www.w3.org/2000/svg"><path d="m31.615228 983.9774c1.17154-1.17153 3.07108-1.17158 4.24266 0l14.14213 14.14214 14.14213-14.14214c1.17157-1.17157 3.07103-1.1716 4.24264-.00001 1.17154 1.17154 1.17157 3.07108 0 4.24266l-14.14214 14.14215 14.14215 14.1421c1.17156 1.1716 1.17153 3.0711-.00001 4.2427-1.1716 1.1716-3.07108 1.1715-4.24264 0l-14.14214-14.1422-14.14213 14.1422c-1.17157 1.1715-3.0711 1.1715-4.24264 0-1.1716-1.1716-1.17158-3.0711 0-4.2427l14.14214-14.1421-14.14214-14.14216c-1.17157-1.17157-1.17161-3.07103-.00001-4.24264z" transform="translate(0 -952.36218)"/></svg>
+                </div>
+                <ul class="nav-top__menu">
+                    <li class="nav-top__item"><a href="#">Contactez-nous</a>
+                        <ul class="nav-top__dropdown-content">
+                            <li class="nav-top__dropped-item"><a class="extended-link" href="#">Angleterre</a></li>
+                            <li class="nav-top__dropped-item"><a class="extended-link" href="#">Canada</a></li>
+                            <li class="nav-top__dropped-item"><a class="extended-link" href="#">US</a></li>
+                            <li class="nav-top__dropped-item"><a class="extended-link" href="#">Australie</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-top__item"><a href="#">À propos de Lord Reginald Stampee III</a>
+                        <ul class="nav-top__dropdown-content">
+                            <li class="nav-top__dropped-item"><a class="extended-link" href="#">La philatélie, c'est quoi?</a></li>
+                            <li class="nav-top__dropped-item"><a class="extended-link" href="#">Biographie de Lord Stampee</a></li>
+                            <li class="nav-top__dropped-item"><a class="extended-link" href="#">Comment certifions-nous les lots?</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-top__item"><a href="#">Termes et conditions</a></li>
+                    <li class="nav-top__item"><a href="#">Aide</a></li>
+                    {% if oMemberConnected %}
+                    <li class="nav-top__item"><a class="toConfirmLogOut" data-href="./?entity=logOut&action=log">Se déconnecter</a></li>
+                    {% else %}
+                    <li class="nav-top__item"><a href="./?entity=signUp&action=display"><img class="signup-logo" src="./assets/icons/create-profil.png" alt="signup logo">Créer un compte</a></li>
+                    {% endif %}
+                    <li class="nav-top__item">
+                        {% if oMemberConnected %}
+                        <img class="member-logo--c" src="./assets/icons/profil-1.webp" alt="logo member">
+                        <ul class="nav-top__dropdown-content--hidden">
+                            <li class="nav-top__dropped-item"><a class="extended-link" href="./?entity=upLoadAuction">Vendre un lot</a></li>
+                            <li class="nav-top__dropped-item"><a class="extended-link" href="./?entity=myAuctionsSales">Mes ventes</a></li>
+                            <li class="nav-top__dropped-item"><a class="extended-link" href="./?entity=myAuctionsBids">Mes mises</a></li>
+                            <li class="nav-top__dropped-item"><a class="extended-link" href="#">Mes enchères favorites</a></li>
+                            <li class="nav-top__dropped-item"><a class="extended-link" href="#">Mon profil de membre</a></li>
+                        </ul>
+                        <span class="member-name">{{ oMemberConnected.User_firstname }}</span>
+                        {% else %}
+                        <img class="member-logo" src="./assets/icons/profil-1.webp" alt="logo member">
+                        <a class="extended-link extended-link--transparent extended-link--hidden" href="./?entity=logIn&action=display">login</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </nav>
+        </section>
+        <section class="header-bottom">
+            <nav class="nav-bottom">
+                <div class="nav-bottom__logo logo">
+                    <img class="logo-img" src="./assets/img/logo.png" alt="logo Stampee" />
+                    <a class="extended-link extended-link--transparent" href=".">logo</a>
+                </div>
+                <nav class="nav-bottom__nav">
+                    <ul class="nav-bottom__menu">
+                        <li class="nav-bottom__item"><a class="extended-link" href="#">Comment ça marche?</a>
+                            <ul class="nav-bottom__dropdown-content">
+                                <li class="nav-bottom__dropped-item"><a class="extended-link" href="#">Créer un profil</a></li>
+                                <li class="nav-bottom__dropped-item"><a class="extended-link" href="#">Placer une offre</a></li>
+                                <li class="nav-bottom__dropped-item"><a class="extended-link" href="#">Suivre une enchère</a></li>
+                                <li class="nav-bottom__dropped-item"><a class="extended-link" href="#">Trouver une enchère</a></li>
+                                <li class="nav-bottom__dropped-item"><a class="extended-link" href="#">Contacter le Webmaster</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-bottom__item"><a class="extended-link" href="./?entity=catalogue">Catalogue</a> </li>
+                        <li class="nav-bottom__item"><a class="extended-link" href="#">Le Magazine de la Philatélie</a>
+                             <ul class="nav-bottom__dropdown-content">
+                                <li class="nav-bottom__dropped-item"><a class="extended-link" href="#">Actualités</a></li>
+                                <li class="nav-bottom__dropped-item"><a class="extended-link" href="#">S'abonner à la Newsletter</a></li>
+                                <li class="nav-bottom__dropped-item"><a class="extended-link" href="#">Les coulisses des enchères</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="nav-bottom__form" action="#">
+                        <input type="text" name="search" id="search" placeholder="Rechercher sur le site...">
+                        <label for="search">Rechercher sur le site</label>
+                        <input type="submit" value="search">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewbox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                    </form>
+                </nav>
+            </nav>
+        </section>
+    </header>
+    {{ include(templateMain) }}
+    <footer class="footer spacer-top-40">
+        <nav class="nav-footer">
+            <div class="nav-footer__logo logo">
+                <img class="logo-img" src="./assets/img/logo.png" alt="logo Stampee" />
+                <a class="extended-link extended-link--transparent" href=".">logo</a>
+            </div>
+            <div class="nav-footer__menu">
+                <ul class="footer-list">
+                    <li class="footer-list__item"><a href=".">Accueil</a></li>
+                    <li class="footer-list__item"><a href="./?entity=catalogue">Catalogue d'enchères</a></li>
+                    <li class="footer-list__item"><a href=".">Magazine</a></li>
+                </ul>
+                <ul class="footer-list">
+                    <li class="footer-list__item"><a href="./?entity=signUp&action=display">Souscription</a></li> 
+                    <li class="footer-list__item"><a href=".">Espace membres</a></li>
+                    <li class="footer-list__item"><a href=".">Newsletter</a></li>
+                </ul>
+                <ul class="footer-list">
+                    <li class="footer-list__item"><a href=".">Presse</a></li>
+                    <li class="footer-list__item"><a href=".">Carrière</a></li>
+                    <li class="footer-list__item"><a href=".">Contact</a></li>
+                    <li class="footer-list__item"><a href=".">Aide</a></li>
+                </ul>
+                <ul class="footer-list">
+                    <li class="footer-list__item">
+                        <img class="footer-img" src="./assets/icons/insta.png" alt="logo Instagram">
+                        <a class="extended-link extended-link--hidden" href=".">Instagram</a>
+                    </li>
+                    <li class="footer-list__item">
+                        <img class="footer-img" src="./assets/icons/fb.png" alt="logo Facebook">
+                        <a class="extended-link extended-link--hidden" href=".">Facebook</a>
+                    </li>
+                    <li class="footer-list__item">
+                        <img class="footer-img" src="./assets/icons/pinterest.png" alt="logo Pinterest">
+                        <a class="extended-link extended-link--hidden" href=".">Pinterest</a>
+                    </li>
+                    <li class="footer-list__item">
+                        <img class="footer-img" src="./assets/icons/twitter.png" alt="logo Twitter">
+                        <a class="extended-link extended-link--hidden" href=".">Twitter</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </footer>
+</body>
+</html>

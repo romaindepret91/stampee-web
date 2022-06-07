@@ -1,0 +1,7 @@
+
+@for $i from 1 through 10{
+    .spacer-top-#{$i * 10} {
+        margin-top: calc(#{$i} * var(--space-base));
+    }
+}
+

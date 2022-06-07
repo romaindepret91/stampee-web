@@ -1,0 +1,102 @@
+
+.catalogue-main {
+    display: flex;
+    flex-direction: column;         
+
+    @media only screen and(min-width: $tablet){
+        flex-direction: row;
+    }
+
+    & > .search-auctions {
+        width: 100%;
+
+        @media only screen and(min-width: $tablet){
+            width: 25%;
+        }
+    }
+
+    & > .auctions-grid {
+        width: 100%;
+
+        @media only screen and(min-width: $tablet){
+            width: 75%;
+        }
+    }
+}
+
+.catalogue-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: var(--space-base) calc(var(--space-base) * 2);
+
+    & > .catalogue-top-form {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+
+        @media only screen and(min-width: $tablet){
+            width: 40%;
+        }
+
+        & > input[type='text'] {
+            border: solid 1px $color-light-grey;
+            padding: calc(var(--space-base) * .9);
+            flex-grow: 1;
+            font-size: calc(var(--font-size-default) * .9);
+        }
+
+        & > svg {
+            fill: $color-dark-blue;
+            width: 4vw;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        & > span {
+
+            &:hover {
+                cursor: pointer;
+                opacity: .8;
+            }
+        }
+
+        & > label {
+            width: 0;
+            position: absolute;
+            display: none;
+        }
+
+        & > input[type='submit'] {
+            display: none;
+        }
+    }
+}
+
+.display-btns {
+    display: none;
+
+    @media only screen and(min-width: $tablet){
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    & > img {
+        width: 3vw;
+        border-radius: 2px;
+        padding: 2px;
+
+        &:hover {
+            cursor: pointer;
+            background-color: $color-light-blue;
+        }
+    }
+}
+
+.catalogue-title {
+    text-align: center;
+    color: $color-dark-blue;
+}

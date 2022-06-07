@@ -1,0 +1,16 @@
+<script type="module" src="scripts/biddingModal.js"></script>
+<dialog id="biddingModal">
+    <div class="biddingModal-content">
+        <p class="biddingModal-title">Entrez le montant de votre mise</p>
+        <div class="bidding-form">
+            <form>
+                <span>$</span>
+                <input class="text-input" type="number" name="auction_bid_amount" min="{{ auction.Auction_highest_bid == null or 0 ? auction.Auction_starting_price + 10 : auction.Auction_highest_bid + 10 }}" step="10" value="{{ auction.Auction_highest_bid == null or 0 ? auction.Auction_starting_price + 10 : auction.Auction_highest_bid + 10 }}">
+            </form>
+            <div class="bidding-form-btns">
+                <button class="btn btn--light-blue OK">OK</button>
+                <button class="btn KO focus">Annuler</button>
+            </div>
+        </div>
+    </div>
+</dialog>

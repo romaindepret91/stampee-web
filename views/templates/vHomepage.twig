@@ -1,0 +1,155 @@
+<main class="home-grid">
+        <section class="home-grid-item--one">
+            <div class="home-hero">
+                <div class="home-hero-title">
+                    <h1>Numéro un des sites d'enchères philatéliques<br>Tout simplement</h1>
+                </div>
+                <div class="home-hero-action">
+                    <button class="btn btn--white home-hero-btn"><a href="./?entity=catalogue">Voir les enchères</a></button>
+                </div>
+            </div>
+        </section>
+        <section class="home-grid-item--two">
+            <article class="img-text-tile">
+                <div class="img-text-tile__img">
+                    <img src="./assets/img/img-logo.jpg" alt="logo Stampee">
+                </div>
+                <div class="img-text-tile__title">
+                    <h3>Pourquoi choisir Stampee?</h3>
+                </div>
+                <ul class="img-text-tile__text-content">
+                    <li><span>Simplicité:</span> Créer un compte et placer votre première offre</li>
+                    <li><span>Confiance: </span> Une expertise de plus de 70 ans, une authentification 100% garantie </li>
+                    <li><span>Richesse: </span>Un choix infini de lots rares et uniques</li>
+                </ul>
+                <div class="img-text-tile__action">
+                    <button class="btn btn--light-blue img-text-tile__button">Créer mon compte</button>
+                </div>
+            </article>
+            <article class="img-text-tile">
+                <div class="img-text-tile__img">
+                    <img src="./assets/img/backstage1.webp" alt="image coulisses">
+                </div>
+                <div class="img-text-tile__title">
+                    <h3>Les coulisses des enchères</h3>
+                </div>
+                <ul class="img-text-tile__text-content">
+                    <li>Qui sont nos experts? Découvrez leurs expériences et compétences</li>
+                    <li>Comment sont réalisées les authentifications des lots?</li>
+                    <li>Quels sont les critères d'évaluation des prix?</li>
+                </ul>
+                <div class="img-text-tile__action">
+                    <button class="btn btn--light-blue img-text-tile__button">En savoir plus</button>
+                </div>
+            </article>
+            <article class="img-text-tile">
+                <div class="img-text-tile__img">
+                    <img src="./assets/img/news1.webp" alt="image actualités">
+                </div>
+                <div class="img-text-tile__title">
+                    <h3>Actualités de la semaine</h3>
+                </div>
+                <ul class="img-text-tile__text-content">
+                    <li>Exposition virtuelle: Les timbres les plus rares du monde <a href="#">[...]</a></li>
+                    <li>Concours des plus beaux timbres du moment: votez pour votre timbre préféré <a href="#">[...]</a></li>
+                    <li>Les meilleurs livres sur la philatélie <a href="#">[...]</a></li>
+                </ul>
+                <div class="img-text-tile__action">
+                    <button class="btn btn--light-blue img-text-tile__button">Voir toutes les actualités</button>
+                </div>
+            </article>
+        </section>
+        <div class="divider--home-grid divider--light-grey"></div>
+        <section class="home-grid-item--three">
+            <section class="categories">
+                <div class="categories-title">
+                    <h2>Catégories</h2>
+                    <img src="./assets/icons/label.png" alt="label logo">
+                </div>
+                <div class="categories-gallery">
+                    <div class="categories-tile"><span>Collection prestige</span>
+                        <a class="extended-link extended-link--transparent" href="#">Collection prestige</a>
+                    </div>
+                    <div class="categories-tile"><span>Timbres du 19ème siècle</span>
+                        <a class="extended-link extended-link--transparent" href="#">Timbres du 19ème siècle</a>
+                    </div>
+                    <div class="categories-tile"><span>Les incontournables d'Europe</span>
+                        <a class="extended-link extended-link--transparent" href="#">Les incontournables d'Europe</a>
+                    </div>
+                    <div class="categories-tile"><span>Les grandes figures politiques</span>
+                        <a class="extended-link extended-link--transparent" href="#">Les grandes figures politiques</a>
+                    </div>
+                    <div class="categories-tile"><span>Timbres en période de guerre</span>
+                        <a class="extended-link extended-link--transparent" href="#">Timbres en période de guerre</a>
+                    </div>
+                    <div class="categories-tile"><span>Collection futuriste</span>
+                        <a class="extended-link extended-link--transparent" href="#">Collection futuriste</a>
+                    </div>
+                    <div class="categories-tile"><span>Artistes du 20ème siècle</span>
+                        <a class="extended-link extended-link--transparent" href="#">Artistes du 20ème siècle</a>
+                    </div>
+                    <div class="categories-tile"><span>Collection BD</span>
+                        <a class="extended-link extended-link--transparent" href="#">Collection BD</a>
+                    </div>
+                    <div class="categories-tile"><span>Timbres d'Orient</span>
+                        <a class="extended-link extended-link--transparent" href="#">Timbres d'Orient</a>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <div class="divider--home-grid divider--home-grid--mobile divider--light-grey"></div>
+        <section class="home-grid-item--four">
+            <section class="current-auctions">
+                <div class="current-auctions-title">
+                    <h2>Les enchères en cours</h2>
+                    <img src="./assets/icons/clock.png" alt="clock logo">
+                </div>
+                <div class="current-auctions-grid">
+                {% for auction in auctions %}
+                    <div class="current-auctions-grid-item" style="background-image: url({{ auction.Stamp_main_image }})">
+                        <div class="current-auctions-grid-item-title">
+                            <h3 class="title-primary">{{ auction.Stamp_name }}</h3>
+                            <h4 class="title-secondary">{{ auction.Stamp_country_origin }}</h4>
+                        </div>
+                        <div class="current-auctions-info">
+                            <p class="current-auctions-price">${{ auction.Auction_starting_price }}</p>
+                            {% set daysLeft = ((auction.Auction_date_end|date('U') - 'now'|date('U')) / 60 / 60 / 24) %}
+                            {% if daysLeft < 1 %}
+                                <p class="current-auctions-status">Termine aujourd'hui</p>
+                            {% else %}
+                                <p class="current-auctions-status">Termine dans: {{ daysLeft|number_format }} jour{{daysLeft|number_format == 1 ? '' : 's'}}</p>
+                            {% endif %}
+                        </div>
+                        <div class="current-auctions-favorites">
+                            <img src="./assets/icons/price-b.png" alt="icon favorite">
+                            <p>{{ auction.Auction_bids_number ? auction.Auction_bids_number : 0 }}</p>
+                        </div>
+                        <a class="extended-link extended-link--hidden" href="./?entity=auction&auctionId={{ auction.Stamp_auction_id }}">{{ auction.Auction_id }}</a>
+                    </div>
+                {% endfor %}
+                    <div class="current-auctions-grid-item current-auctions-grid-item--last">
+                        <div class="last-grid-item-content">
+                            <p>Voir toutes les enchères</p>
+                            <p class="arrow">-&gt;&gt;</p>
+                        </div>
+                        <a class="extended-link extended-link--transparent extended-link--hidden" href="./?entity=catalogue">Catalogue</a>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <div class="divider--home-grid divider--light-grey"></div>
+        <section class="home-grid-item--five">
+            <section class="home-bio">
+                <div class="home-bio-img">
+                    <img src="./assets/img/lord.webp" alt="photo of the Lord">
+                </div>
+                <div class="home-bio-text">
+                    <h2 class="home-bio-title">Mais qui est le Lord Reginald Stampee III?</h2>
+                    <div class="home-bio-text-content">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis delectus voluptates ut eius commodi eos itaque ex amet dolor! Exercitationem nulla tenetur distinctio fugiat, animi impedit assumenda error, officiis illo neque molestias beatae deleniti accusantium explicabo. Architecto dolore officiis impedit delectus qui alias repellat doloribus non explicabo, cupiditate ipsam exercitationem.</p>
+                        <button class="btn btn--light-blue home-bio-btn">Voir la biographie</button>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>

@@ -1,0 +1,16 @@
+
+:root {
+  --space-base: 5px;
+  --space-xsmall: calc(var(--space-base) * 2);
+  --space-small: calc(var(--space-base) * 5);
+  --space-medium: calc(var(--space-base) * 8);
+  --space-large: calc(var(--space-base) * 10);
+  --space-xlarge: calc(var(--space-base) * 20);
+
+  @media only screen and (min-width: $tablet) {
+    --space-base: 1vw;
+  }
+  @media only screen and (min-width: $desktop-xlarge) {
+    --space-base: .8vw;
+  }
+}

@@ -1,0 +1,167 @@
+<main>
+    <section class="upload-auction-form">
+        <h1 class="form-title">{{ title|upper }}</h1>
+        {% if update is defined %}
+            <form class="form" method="POST" action="?entity=myAuctionsSales&action=update&auctionId={{ auction.auction_id }}&update" enctype="multipart/form-data">
+        {% else %}
+            <form class="form" method="POST" action="?entity=upLoadAuction&action=upload" enctype="multipart/form-data">
+        {% endif %}
+            <input type="hidden" name="stamp_id" value="{{ stamp.stamp_id }}" />
+            <input type="hidden" name="auction_id" value="{{ auction.auction_id }}" />
+            <div class="form-input">
+                <label>Titre</label>
+                <input class="text-input" type="text" name="stamp_name" value="{{ stamp.stamp_name }}">
+                <span class="error-msg">&nbsp;{{ errorsStamp.stamp_name }}</span>
+            </div>
+            <div class="form-input">
+                <label>Région d'origine</label>
+                <select class="select-input" name="stamp_region_origin" id="stamp_region_origin">
+                    <option value="Amérique du Nord">Amérique du Nord</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Asie">Asie</option>
+                    <option value="Amérique du Sud">Amérique du Sud</option>
+                    <option value="Afrique">Afrique</option>
+                    <option value="Reste du monde">Reste du monde</option>
+                </select>
+                <span class="error-msg">&nbsp;{{ errorsStamp.stamp_region_origin }}</span>
+            </div>
+            <div class="form-input">
+                <label>Pays d'origine</label>
+                <input class="text-input" type="text" name="stamp_country_origin" value="{{ stamp.stamp_country_origin }}">
+                <span class="error-msg">&nbsp;{{ errorsStamp.stamp_country_origin }}</span>
+            </div>
+            <div class="form-input">
+                <label>Année d'émission</label>
+                <input class="text-input" type="number" name="stamp_year" min="1840" value="{{ stamp.stamp_year }}">
+                <span class="error-msg">&nbsp;{{ errorsStamp.stamp_year }}</span>
+            </div>
+            <div class="form-input">
+                <label>Année de fin d'émission</label>
+                <input class="text-input" type="number" name="stamp_year_end" min="1840" value="{{ stamp.stamp_year_end }}">
+                <span class="error-msg">&nbsp;{{ errorsStamp.stamp_year_end }}</span>
+            </div>
+            <div class="form-input">
+                <label>Condition</label>
+                <select class="select-input" name="stamp_condition" id="stamp_condition">
+                    <option value="Parfaite">Parfaite</option>
+                    <option value="Excellente">Excellente</option>
+                    <option value="Bonne">Bonne</option>
+                    <option value="Moyenne">Moyenne</option>
+                    <option value="Endommagée">Endommagée</option>
+                </select>
+                <span class="error-msg">&nbsp;{{ errorsStamp.stamp_condition }}</span>
+            </div>
+            <div class="form-input">
+                <label>Tirage</label>
+                <input class="text-input" type="number" name="stamp_prints_number" min="1" value="{{ stamp.stamp_prints_number }}">
+                <span class="error-msg">&nbsp;{{ errorsStamp.stamp_prints_number }}</span>
+            </div>
+            <div class="form-input">
+                <label>Dimensions</label>
+                <input class="text-input" type="text" name="stamp_dimensions" value="{{ stamp.stamp_dimensions }}">
+                <span class="error-msg">&nbsp;{{ errorsStamp.stamp_dimensions }}</span>
+            </div>
+            <div class="form-input">
+                <label>Couleur</label>
+                <input class="text-input" type="text" name="stamp_color" value="{{ stamp.stamp_color }}">
+                <span class="error-msg">&nbsp;{{ errorsStamp.stamp_color }}</span>
+            </div>
+            <div class="form-input">
+                <label>Créateur</label>
+                <input class="text-input" type="text" name="stamp_creator" value="{{ stamp.stamp_creator }}">
+                <span class="error-msg">&nbsp;{{ errorsStamp.stamp_creator }}</span>
+            </div>
+            <div class="form-input">
+                <label>Numéro de série</label>
+                <input class="text-input" type="text" name="stamp_number" value="{{ stamp.stamp_number }}">
+                <span class="error-msg">&nbsp;{{ errorsStamp.stamp_number }}</span>
+            </div>
+            <div class="form-input">
+                <label>Certifié</label>
+                <div class="form-input-content">
+                    <input class="radio-input" type="radio" name="stamp_certified" id="stamp_certified" value="yes" checked>
+                    <label for="stamp_certified">Oui</label><br>
+                    <input class="radio-input" type="radio" name="stamp_certified" id="stamp_certified" value="no">
+                    <label for="stamp_certified">Non</label><br>
+                </div>
+                <span class="error-msg">&nbsp;{{ errorsStamp.stamp_certified }}</span>
+            </div>
+            <div class="form-input">
+                <label>Date de début de l'enchère</label>
+                 {% if update is defined and auction.auction_date_start|date('d/m/Y H:i:s') <= 'now'|date('d/m/Y H:i:s', 'America/New_York') %}
+                    <input class="text-input" type="date" name="auction_date_start" value="{{ auction.auction_date_start }}" style="pointer-events:none; opacity:.4;">
+                  {% else %}
+                    <input class="text-input" type="date" name="auction_date_start" value="{{ auction.auction_date_start }}">
+                 {% endif %}
+                <span class="error-msg">&nbsp;{{ errorsAuction.auction_date_start }}</span>
+            </div>
+            <div class="form-input">
+                <label>Date de fin de l'enchère</label>
+                <input class="text-input" type="date" name="auction_date_end" value="{{ auction.auction_date_end }}">
+                <span class="error-msg">&nbsp;{{ errorsAuction.auction_date_end }}</span>
+            </div>
+            <div class="form-input">
+                <label>Prix</label>
+                <input class="text-input" type="number" name="auction_starting_price" min="1" value="{{ auction.auction_starting_price }}">
+                <span class="error-msg">&nbsp;{{ errorsAuction.auction_starting_price }}</span>
+            </div>
+            <div class="form-input">
+                <label>Favori du Lord</label>
+                <div class="form-input-content">
+                    <input class="radio-input" type="radio" name="auction_favorite" id="auction_favorite" value="yes">
+                    <label for="auction_favorite">Oui</label><br>
+                    <input class="radio-input" type="radio" name="auction_favorite" id="auction_favorite" value="no" checked>
+                    <label for="auction_favorite">Non</label><br>
+                </div>
+                <span class="error-msg">&nbsp;{{ errorsAuction.auction_favorite }}</span>
+            </div>
+            <input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+            <div class="form-input">
+                <label>Image principale</label>
+                <div class="wrapper">
+                    <input type="file" name="stamp_main_image" id="stamp_main_image">
+                    {% if stamp.stamp_main_image %}
+                        <div class="current-img">
+                            <img src="{{ stamp.stamp_main_image }}" alt="auction image">
+                            <span>image actuelle</span>
+                            <input type="hidden" name="stamp_main_image" value="{{ stamp.stamp_main_image }}" />
+                        </div>
+                    {% endif %}
+                </div>
+                <span class="error-msg">&nbsp;{{ errorsStamp.stamp_main_image }}</span>
+            </div>
+            <div class="form-input">
+                <label>Image supplémentaire 1</label>
+                <div class="wrapper">
+                    <input type="file" name="image_secondary_one" id="image_secondary_one">
+                    {% if stamp.image_secondary_one %}
+                    <div class="current-img">
+                        <img src="{{ stamp.image_secondary_one }}" alt="auction image">
+                        <span>image actuelle</span>
+                        <input type="hidden" name="image_secondary_one" value="{{ stamp.image_secondary_one }}" />
+                    </div>
+                     {% endif %}
+                </div>
+                <span class="error-msg">&nbsp;{{ errorsImg1 }}</span>
+            </div>
+            <div class="form-input">
+                <label>Image supplémentaire 2</label>
+                <div class="wrapper">
+                    <input type="file" name="image_secondary_two" id="image_secondary_two">
+                     {% if stamp.image_secondary_two %}
+                    <div class="current-img">
+                        <img src="{{ stamp.image_secondary_two }}" alt="auction image">
+                        <span>image actuelle</span>
+                        <input type="hidden" name="image_secondary_two" value="{{ stamp.image_secondary_two }}" />
+                    </div>
+                     {% endif %}
+                </div>
+                <span class="error-msg">&nbsp;{{ errorsImg2 }}</span>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn--light-blue"><a href="?entity=myAuctionsSales">Retour</a></button>
+                <input class="submit btn btn--light-blue" type="submit" value="Valider">
+            </div>
+        </form>
+    </section>
+</main>

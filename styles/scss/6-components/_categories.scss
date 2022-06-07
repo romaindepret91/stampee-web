@@ -1,0 +1,91 @@
+
+.categories {
+    padding-left: calc(var(--space-base) * 3);
+    padding-right: calc(var(--space-base) * 3);
+    display: flex;
+    flex-direction: column;
+
+    @media only screen and(min-width: $tablet){
+        padding-right: 0;
+    }
+
+    & > .categories-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & > h2 {
+            font-family: $font-tertiary;
+            color: $color-dark-blue;
+            font-size: calc(var(--font-size-default)* 1.2);
+        }
+
+        & > img {
+            width: 20px;
+            height: 20px;
+            margin-left: 1.5vw;
+
+            @media only screen and(min-width: $mobile-large){
+                margin-left: 1vw;
+            }
+
+            @media only screen and(min-width: $desktop-large){
+                width: 25px;
+                height: 25px;
+            }
+        }
+    }
+
+    & > .categories-gallery {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        flex-grow: 1;
+        margin-top: calc(var(--space-base) * 2);
+
+        & > .categories-tile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80%;
+            height: 80px;
+            border-radius: 3px;
+            background-color: $color-light-blue;
+            color: $color-dark-blue;
+            font-family: $font-tertiary;
+            position: relative;
+            margin-top: calc(var(--space-base) * 2);
+
+            & > span {
+                font-weight: $font-weight-medium;
+                text-align: center;
+
+                @media only screen and(min-width: $tablet){
+                    font-size: calc(var(--font-size-default)* .8);
+                }
+            }
+
+            @media only screen and(min-width: $tablet){
+                width: 100%;
+                margin-top: 0;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                background-color: $color-white;
+                opacity: .15;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            &:hover {
+                opacity: .8;
+            }
+        }
+    }
+}

@@ -1,0 +1,119 @@
+
+.my-auctions-bids {
+    padding: calc(var(--space-base) * 4);
+
+    & > .my-auctions-bids-title {
+        font-size: calc(var(--font-size-default) * 1.4);
+    }
+
+    & > .my-auction-bid-wrapper {
+        display: flex;
+        align-items: stretch;
+        margin-top: calc(var(--space-base) * 2);
+        border: solid 1px $color-light-grey;
+
+        & > .my-auction-bid {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--space-base);
+            width: 80%;
+    
+            & > .my-auction-bid-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                flex-grow: 1;
+    
+                & > .my-auction-bid-info { 
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    width: 90%;
+    
+                    & > .my-auction-bid-info-container {
+                       display: flex;
+                       flex-direction: column;
+                       margin-top: 5px;
+
+                        & > .my-auction-bid-id {
+                            font-size: calc(var(--font-size-default) * .7);
+                        }
+    
+                        &:first-child {
+                           width: 100%;
+                        }
+    
+                        &:nth-child(2), &:nth-child(3) {
+                                width: 45%;
+                        }
+        
+                        & > .my-auction-bid-info-item {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            font-size: calc(var(--font-size-default) * .8);
+                            margin-top: 5px;
+        
+                            & > .my-auction-bid-info-label {
+                                font-weight: $font-weight-medium;
+                            }
+                        }
+                    }
+                }
+    
+                & > .my-auction-bid-btns {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 20%;
+                    margin-top: 15px;
+    
+                    & > .my-auction-bid-btn {
+                        padding: 5px 15px;
+                        width: minmax(150px, fitcontent);
+    
+                        & > a {
+                            font-size: calc(var(--font-size-default) * .8);
+                        }
+                    }
+                }
+            }
+    
+            & > .my-auction-bid-img {
+                display: flex;
+                justify-content: center;
+                width: 220px;
+                height: 220px;
+    
+                & > img {
+                    object-fit: contain;
+                }
+            }
+        }
+    
+        & > .my-auction-bid-status {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 var(--space-base);
+            width: 20%;
+            background-color: $color-xlight-grey;
+
+            & > p:first-child {
+                font-size:calc(var(--font-size-default) * 1);
+                font-weight: $font-weight-medium;
+            }
+
+            & > p:last-child {
+                text-align: center;
+                margin-top: var(--space-base);
+            }
+        }
+
+    }
+}
+
+.no-sale {
+    margin-top: var(--space-base);
+}
