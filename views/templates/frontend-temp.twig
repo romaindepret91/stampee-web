@@ -61,11 +61,11 @@
                         {% if oMemberConnected %}
                         <img class="member-logo--c" src="./assets/icons/profil-1.webp" alt="logo member">
                         <ul class="nav-top__dropdown-content--hidden">
-                            <li class="nav-top__dropped-item"><a class="extended-link" href="./?entity=upLoadAuction">Vendre un lot</a></li>
-                            <li class="nav-top__dropped-item"><a class="extended-link" href="./?entity=myAuctionsSales">Mes ventes</a></li>
-                            <li class="nav-top__dropped-item"><a class="extended-link" href="./?entity=myAuctionsBids">Mes mises</a></li>
-                            <li class="nav-top__dropped-item"><a class="extended-link" href="#">Mes enchères favorites</a></li>
-                            <li class="nav-top__dropped-item"><a class="extended-link" href="#">Mon profil de membre</a></li>
+                            <li class="nav-top__dropped-item"><a href="./?entity=upLoadAuction">Vendre un lot</a></li>
+                            <li class="nav-top__dropped-item"><a href="./?entity=myAuctionsSales">Mes ventes</a></li>
+                            <li class="nav-top__dropped-item"><a href="./?entity=myAuctionsBids">Mes mises</a></li>
+                            <li class="nav-top__dropped-item"><a href="#">Mes enchères favorites</a></li>
+                            <li class="nav-top__dropped-item"><a href="#">Mon profil de membre</a></li>
                         </ul>
                         <span class="member-name">{{ oMemberConnected.User_firstname }}</span>
                         {% else %}

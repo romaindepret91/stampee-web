@@ -1,76 +1,79 @@
-
 .login-form {
-    padding: calc(var(--space-base) * 4) calc(var(--space-base) * 3) 0 calc(var(--space-base) * 3);
+  padding: calc(var(--space-base) * 4) calc(var(--space-base) * 3) 0
+    calc(var(--space-base) * 3);
 
-    &:after {
-        content: '';
-        position: absolute;
-        left: 26%;
-        top: 300px;
-        width: 74%;
-        height: 700px;
-        background-image: url('../../assets/img/logo-bg.png');
-        background-size: cover;
-        background-repeat: no-repeat;
-        opacity: .05;
-        z-index: -1;
+  &:after {
+    content: "";
+    position: absolute;
+    left: 26%;
+    top: 300px;
+    width: 74%;
+    height: 700px;
+    background-image: url("../../assets/img/logo-bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.05;
+    z-index: -1;
+  }
+
+  & > .form-title {
+    font-family: $font-tertiary;
+  }
+
+  & > .form {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--space-base);
+    position: relative;
+
+    & > .error-msg {
+      position: absolute;
+      left: 0;
+      top: -10px;
+      color: $color-red-dark;
     }
 
-    & > .form-title {
-        font-family: $font-tertiary;
+    & > .form-input {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      width: 90vw;
+      margin-top: 20px;
+
+      @media only screen and(min-width: $tablet) {
+        width: 60vw;
+      }
+
+      @media only screen and(min-width: $desktop) {
+        width: 50vw;
+      }
+
+      @media only screen and(min-width: $desktop-large) {
+        width: 40vw;
+      }
+
+      @media only screen and(min-width: $desktop-xlarge) {
+        width: 30vw;
+      }
+
+      & > .text-input {
+        width: 70%;
+      }
+
+      & > label {
+        width: 30%;
+      }
     }
 
-    & > .form {
-        display: flex;
-        flex-direction: column;
-        margin-top: var(--space-base);
-        position: relative;
+    & > .submit {
+      width: 20%;
+      font-weight: $font-weight-heavy;
+      padding: 10px;
+      margin-top: calc(var(--space-base) * 2);
 
-        & > .error-msg {
-            position: absolute;
-            left: 0;
-            top: -10px;
-            color: $color-red-dark;
-        }
-
-        & > .form-input {
-            display: flex;
-            justify-content: space-between;
-            position: relative;
-            width: 90vw;
-            margin-top: 20px;
-
-            @media only screen and(min-width: $tablet){
-                width: 60vw;
-            }
-
-            @media only screen and(min-width: $desktop){
-                width: 50vw;
-            }
-
-            @media only screen and(min-width: $desktop-large){
-                width: 40vw;
-            }
-
-            @media only screen and(min-width: $desktop-xlarge){
-                width: 30vw;
-            }
-
-            & > .text-input {
-                width: 70%;
-            }
-         }
-
-        & > .submit {
-            width: 20%;
-            font-weight: $font-weight-heavy;
-            padding: 10px;
-            margin-top: calc(var(--space-base) * 2);
-
-            @media only screen and(min-width: $tablet){
-                width: 10%;
-            }
-        }
-
+      @media only screen and(min-width: $tablet) {
+        width: 10%;
+      }
     }
+  }
 }
