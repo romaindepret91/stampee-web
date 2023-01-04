@@ -3,11 +3,11 @@
 class PDOSingleton extends \PDO {
     private static $instance = null;
 
-    const DB_SERVEUR  = 'localhost';
-    const DB_NOM      = 'projet-web-1'; // const DB_NOM      = 'e2195318';
+  const DB_SERVEUR = "us-cdbr-east-06.cleardb.net"; //'localhost';
+    const DB_NOM      = "heroku_d009935f3ed300f"; //'projet-web-1'; // const DB_NOM      = 'e2195318';
     const DB_DSN      = 'mysql:host='. self::DB_SERVEUR .';dbname='. self::DB_NOM.';charset=utf8'; 
-    const DB_LOGIN    = 'root'; // const DB_LOGIN    = 'e2195318';
-    const DB_PASSWORD = 'root'; // const DB_PASSWORD = 'IUrGPqcQ7tkvGcgx2Dzc';
+    const DB_LOGIN    = "b1d30fcbc4b58c"; //'root'; // const DB_LOGIN    = 'e2195318';
+    const DB_PASSWORD = "1a8bb202"; //'root'; // const DB_PASSWORD = 'IUrGPqcQ7tkvGcgx2Dzc';
    
 
     private function __construct() {
