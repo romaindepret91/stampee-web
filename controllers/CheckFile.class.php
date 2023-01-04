@@ -15,7 +15,7 @@ class CheckFile {
     * @param array $file tableau des propriétés du fichier 
     *
     */
-    public function checkFile($file, $userId) {
+    public function __construct($file, $userId) {
         if ($file['error'] > 0) {
             if($file['error'] === 2) $this->error = "Taille de fichier trop grande (doit être < 1Mo)";
             else {
