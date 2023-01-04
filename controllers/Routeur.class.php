@@ -12,7 +12,6 @@ class Routeur {
     ["admin",             "Admin", "manage"]
   ];
 
-  const BASE_URI = "/projet-web-1/App/";
   const ERROR_FORBIDDEN = "HTTP 403";
   const ERROR_NOT_FOUND = "HTTP 404";
   
@@ -23,10 +22,11 @@ class Routeur {
    */
   public function router() {
     try {
+      $baseUri = substr($_SERVER['PHP_SELF'], 0, -9);
       $uri =  $_SERVER['REQUEST_URI'];
       if (strpos($uri, '?')) $uri = strstr($uri, '?', true);
       foreach ($this->routes as $route) {
-        $routeUri     = self::BASE_URI.$route[0];
+        $routeUri     =  $baseUri.$route[0];
         $routeClass  = $route[1];
         $routeMethod = $route[2];
         if ($routeUri ===  $uri) {
